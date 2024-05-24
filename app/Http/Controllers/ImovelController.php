@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 class ImovelController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.   
      */
     public function index()
     {
-        return view('imovel.index');
+        $imoveis = Imovel::query()->orderBy('created_at', 'desc')->paginate();
+        return view('imoveis.index', compact('imoveis'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ImovelController extends Controller
      */
     public function create()
     {
-        return view('imovel.create');
+        return view('imoveis.create');
     }
 
     /**
@@ -36,7 +37,8 @@ class ImovelController extends Controller
      */
     public function show(Imovel $imovel)
     {
-        return view('imovel.show');
+        $imoveis = Imovel::all();
+        return view('imoveis.show', ['imoveis' => $imoveis]);
     }
 
     /**

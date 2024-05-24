@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Imovel::factory(10)->create();
+        Imovel::factory(1)->create();
     }
 }

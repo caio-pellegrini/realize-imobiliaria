@@ -11,4 +11,4 @@ Route::get('/', function () {
 // Route::get('/imovel/{id}', [ImovelController::class, 'show'])->name('imoveis.show');
 // Route::get('/imoveis/anunciar', [ImovelController::class, 'create'])->name('imoveis.create');
 
-//Route::resource('imoveis', 'App\Http\Controllers\ImovelController');
+Route::resource('imoveis', ImovelController::class);

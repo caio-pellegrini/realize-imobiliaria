@@ -13,7 +13,8 @@ return new class extends Migration
             $table->string('titulo');
             $table->text('descricao')->nullable();
             $table->decimal('preco', 10, 2)->nullable();
-            $table->string('endereco')->nullable();
+            $table->string('logradouro')->nullable();
+            $table->string('bairro')->nullable();
             $table->string('cidade')->nullable();
             $table->string('estado')->nullable();
             $table->string('cep')->nullable();
