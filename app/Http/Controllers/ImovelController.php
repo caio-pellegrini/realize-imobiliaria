@@ -38,7 +38,7 @@ class ImovelController extends Controller
     public function show(Imovel $imovel)
     {
         $imoveis = Imovel::all();
-        return view('imoveis.show', ['imoveis' => $imoveis]);
+        return view('imoveis.show', ['imovel' => $imovel]);
     }
 
     /**

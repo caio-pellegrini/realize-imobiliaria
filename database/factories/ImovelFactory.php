@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use OpenAI\Laravel\Facades\OpenAI;
+use Unsplash\HttpClient;
+use Unsplash\Search;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Imovel>
@@ -19,6 +21,23 @@ class ImovelFactory extends Factory
     {
 
         $bairros = ['São Cristóvão', 'São Francisco', 'Laranjeiras', 'Parque das Flores', 'São Remo', 'Jardim Bela Vista', 'Paraíso', 'Real Paraíso', 'Centro', 'Bela Vista do Mirante', 'Jardim Canaã', 'Jaqueline', 'Jardim das Oliveiras', 'Acapulco', 'Jardim Santana', 'Bandeirantes', 'São Guilherme', 'Centenário', 'Vale do Sonho', 'Imperial', 'Vera Cruz'];
+
+        HttpClient::init([
+            'applicationId'	=> 'D960jgr1iBHKa9hVF70cgYZwGw9MK1Voq6rklOkedig',
+            'secret'	=> 'hyle0W2UMbeE_oIoucXlznPo3jLvwdCKd5lqDxnUcEA',
+            'callbackUrl'	=> 'https://your-application.com/oauth/callback',
+            'utmSource' => 'Laravel Realize'
+        ]);
+        
+        // Buscar imagens de casas brasileiras
+        $response = Search::photos('house exterior', 1, 3, 'landscape');
+        $photos = $response->getResults();
+
+        // Extrair URLs das imagens
+        $imageUrls = [];
+        foreach ($photos as $photo) {
+            $imageUrls[] = $photo['urls']['small'];
+        }
 
         $area_contruida = fake()->numberBetween(50, 290);
         $area_terreno = $this->gerarAreaTerreno($area_contruida, 300);
@@ -39,7 +58,7 @@ class ImovelFactory extends Factory
             'status' => fake()->randomElement(['Disponível', 'Vendido', 'Alugado']),
             'tipo_negociacao' => fake()->randomElement(['Venda', 'Locação']),
             'caracteristicas' => json_encode(['piscina' => fake()->boolean(), 'area_churrasco' => fake()->boolean(), 'garagem' => fake()->numberBetween(1,3)]),
-            'imagens' => json_encode([fake()->imageUrl(), fake()->imageUrl(), fake()->imageUrl()])
+            'imagens' => json_encode($imageUrls)
         ];
 
         $imovelJson = json_encode($imovel);
