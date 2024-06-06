@@ -1,10 +1,12 @@
 <x-layout>
     <x-slot name="titulo">Realize Empreendimentos</x-slot>
 
-    <main>
-        
-    </main>
-    <p class="font-poppins">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus deleniti possimus repellat excepturi aspernatur fuga eos voluptatibus, delectus labore magni ipsum eaque officia, est aliquid exercitationem incidunt error et consequatur.
-    </p>
+    <div class="px-10">
+        <section class="flex justify-center items-center">
+            <img src="{{ asset('assets/imgs/hero.png')}}" alt="">
+
+        </section>
+
+    </div>
+
 </x-layout>

@@ -10,6 +10,16 @@
 
 @font-face {
     font-family: 'Poppins';
+    font-weight: 500;
+    src: url('/fonts/poppins/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
     font-weight: 700;
     src: url('/fonts/poppins/Poppins-Bold.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
 }
