@@ -13,8 +13,8 @@ Route::get('/', function () {
 
 Route::resource('imoveis', ImovelController::class);
 
-Route::get('/servicos', function () {
-    return view('welcome');
+Route::get('/quem somos', function () {
+    return view('quem-somos');
 })->name('servicos');
 
 Route::get('/contato', function () {
