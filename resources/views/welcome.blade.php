@@ -9,19 +9,27 @@
             <div
                 class="lg:absolute lg:bottom-16 lg:right-44 sm:flex flex-col lg:flex-row justify-between items-center lg:p-8 w-full lg:w-auto">
                 <div class="bg-white text-black p-4 rounded-lg shadow-md mt-6 lg:mt-0 lg:max-w-md w-full">
-                    <p class="text-lg font-semibold mb-2">Encontre em poucos cliques o seu imóvel ideal</p>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <input type="radio" id="alugar" name="tipo" class="mr-1"><label
-                            for="alugar">Alugar</label>
-                        <input type="radio" id="comprar" name="tipo" class="mr-1"><label
-                            for="comprar">Comprar</label>
-                    </div>
-                    <input type="text" placeholder="Onde?" class="w-full mb-2 p-2 border rounded">
-                    <select class="w-full mb-2 p-2 border rounded">
-                        <option>Tipo de imóvel</option>
-                    </select>
-                    <input type="text" placeholder="Aluguel/Valor até" class="w-full mb-2 p-2 border rounded">
-                    <button class="w-full bg-blue-500 text-white p-2 rounded">Buscar Imóvel</button>
+                    <form method="GET" action="{{ route('imoveis.buscar') }}">
+                        <p class="text-lg font-semibold mb-2">Encontre em poucos cliques o seu imóvel ideal</p>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <input type="radio" id="alugar" name="tipo_negociacao" value="Locação"
+                                class="mr-1"><label for="alugar">Alugar</label>
+                            <input type="radio" id="comprar" name="tipo_negociacao" value="Venda"
+                                class="mr-1"><label for="comprar">Comprar</label>
+                        </div>
+                        <input type="text" name="localizacao" placeholder="Onde?"
+                            class="w-full mb-2 p-2 border rounded">
+                        <select name="tipo" class="w-full mb-2 p-2 border rounded">
+                            <option value="">Tipo de imóvel</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Comercio">Comércio</option>
+                            <option value="Terreno">Terreno</option>
+                        </select>
+                        <input type="text" name="preco" placeholder="Aluguel/Valor até"
+                            class="w-full mb-2 p-2 border rounded">
+                        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Buscar Imóvel</button>
+                    </form>
                 </div>
             </div>
         </section>

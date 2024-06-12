@@ -31,4 +31,6 @@ Route::get('/alugar', function () {
 
 Route::get('/anunciar', function () {
     return view('welcome');
-})->name('anunciar');   
+})->name('anunciar');
+
+Route::get('/imoveis/buscar', [ImovelController::class, 'buscar'])->name('imoveis.buscar');

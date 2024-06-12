@@ -64,4 +64,39 @@ class ImovelController extends Controller
     {
         //
     }
+
+    public function buscar(Request $request)
+    {
+        $query = Imovel::query();
+
+        // Filtrar por tipo de negociação (venda/locação)
+        if ($request->filled('tipo_negociacao')) {
+            $query->where('tipo_negociacao', $request->input('tipo_negociacao'));
+        }
+
+        // Filtrar por localização (cidade, estado, bairro)
+        if ($request->filled('localizacao')) {
+            $query->where(function($q) use ($request) {
+                $q->where('cidade', 'like', '%' . $request->input('localizacao') . '%')
+                  ->orWhere('estado', 'like', '%' . $request->input('localizacao') . '%')
+                  ->orWhere('bairro', 'like', '%' . $request->input('localizacao') . '%');
+            });
+        }
+
+        // Filtrar por tipo de imóvel
+        if ($request->filled('tipo')) {
+            $query->where('tipo', $request->input('tipo'));
+        }
+
+        // Filtrar por preço
+        if ($request->filled('preco')) {
+            $query->where('preco', '<=', $request->input('preco'));
+        }
+
+        // Executar a consulta
+        $imoveis = $query->get();
+
+        // Retornar os resultados da busca (você pode retornar uma view específica com os resultados)
+        return view('imoveis.resultados', compact('imoveis'));
+    }
 }
