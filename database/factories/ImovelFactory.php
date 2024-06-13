@@ -11,7 +11,7 @@ use Unsplash\Search;
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Imovel>
  */
 class ImovelFactory extends Factory
-{   
+{
     /**
      * Define the model's default state.
      *
@@ -41,7 +41,6 @@ class ImovelFactory extends Factory
             $imageUrls[] = $photo['urls']['small'];
         }
 
-
         // Generate the rest of the attributes using OpenAI
         $prompt = "
         Crie um título, descrição, preço, logradouro, bairro, tipo, quartos, banheiros, status, tipo de negociação, área do terreno, área construída,  características para um imóvel com as seguintes características:
@@ -55,12 +54,13 @@ class ImovelFactory extends Factory
         - Tipo_negociacao: 'Venda' ou 'Locação'
         - Se for 'Venda', o status pode ser 'Disponível' ou 'Vendido' e o preço deve ser do total da venda.
         - Se for 'Locação', o status pode ser 'Disponível' ou 'Alugado' e o preço deve ser do aluguel mensal.
-        - Atributos para terrenos: quartos e banheiros devem ser 'N.A' ou 0.
+        - Atributos para terrenos: quartos e banheiros devem ser 0.
         - Características: Piscina (bool), area_churrasco (bool), garagem (quant)
         - Observações:
             - Seja criativo nos nomes das ruas e dos números dos imóveis.
             - Não responda nada além dos atributos em JSON.
-        Responda no formato JSON, seguindo o MODELO abaixo:
+        Responda no formato JSON, seguindo o MODELO abaixo, o que está entre aspas triplas. NÃO RESPONDA FORA DESTE FORMATO:
+        '''
         {
             'titulo': 'Linda casa com piscina no São Cristóvão',
             'descricao': 'Casa nova com 3 quartos, 2 banheiros, piscina, garagem para 2 carros, área de churrasco, localizada em um dos melhores bairros da cidade. Não perca essa oportunidade!'
@@ -82,7 +82,9 @@ class ImovelFactory extends Factory
                 'area_churrasco': true,
                 'garagem': 2
             }
-        }";
+        }
+        '''
+        ";
 
         $result = json_decode(OpenAI::chat()->create([
             'model' => 'gpt-3.5-turbo',
@@ -90,6 +92,8 @@ class ImovelFactory extends Factory
                 ['role' => 'user', 'content' => $prompt],
             ],
         ])->choices[0]->message->content);
+
+        // echo $result->titulo;
 
         return [
             'titulo' => $result->titulo,
@@ -101,8 +105,8 @@ class ImovelFactory extends Factory
             'estado' => $result->estado,
             'cep' => $result->cep,
             'tipo' => $result->tipo,
-            'quartos' => $result->tipo == 'Terreno' ? 'N.A' : $result->quartos,
-            'banheiros' => $result->tipo == 'Terreno' ? 'N.A' : $result->banheiros,
+            'quartos' => $result->quartos,
+            'banheiros' => $result->banheiros,
             'area_terreno' => $result->area_terreno,
             'area_construida' => $result->area_construida,
             'status' => $result->status,
