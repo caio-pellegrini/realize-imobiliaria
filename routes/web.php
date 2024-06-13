@@ -21,13 +21,9 @@ Route::get('/contato', function () {
     return view('contato');
 })->name('contato');
 
-Route::get('/comprar', function () {
-    return view('welcome');
-})->name('comprar');
+Route::get('/comprar', [ImovelController::class, 'index'])->name('comprar');
 
-Route::get('/alugar', function () {
-    return view('welcome');
-})->name('alugar');
+Route::get('/alugar', [ImovelController::class, 'index'])->name('alugar');
 
 Route::get('/anunciar', function () {
     return view('anunciar');

@@ -21,27 +21,7 @@ class ImovelFactory extends Factory
     {
         $bairros = ['São Cristóvão', 'São Francisco', 'Laranjeiras', 'Parque das Flores', 'São Remo', 'Jardim Bela Vista', 'Paraíso', 'Real Paraíso', 'Centro', 'Bela Vista do Mirante', 'Jardim Canaã', 'Jaqueline', 'Jardim das Oliveiras', 'Acapulco', 'Jardim Santana', 'Bandeirantes', 'São Guilherme', 'Centenário', 'Vale do Sonho', 'Imperial', 'Vera Cruz'];
 
-        // Initialize Unsplash API
-        HttpClient::init([
-            'applicationId' => 'D960jgr1iBHKa9hVF70cgYZwGw9MK1Voq6rklOkedig',
-            'secret' => 'hyle0W2UMbeE_oIoucXlznPo3jLvwdCKd5lqDxnUcEA',
-            'callbackUrl' => 'https://your-application.com/oauth/callback',
-            'utmSource' => 'Laravel Realize'
-        ]);
-
-        // Fetch house images
-        $response = Search::photos('house exterior', 1, 1, 'landscape');
-        $photos = $response->getResults();
-        $response2 = Search::photos('house interior', 1, 2, 'landscape');
-        $photos = array_merge($photos, $response2->getResults());
-
-        // Extract image URLs
-        $imageUrls = [];
-        foreach ($photos as $photo) {
-            $imageUrls[] = $photo['urls']['small'];
-        }
-
-        // Generate the rest of the attributes using OpenAI
+        // Generate the attributes using OpenAI
         $prompt = "
         Crie um título, descrição, preço, logradouro, bairro, tipo, quartos, banheiros, status, tipo de negociação, área do terreno, área construída,  características para um imóvel com as seguintes características:
         - No título, inclua um adjetivo que defina bem o imóvel e pelo menos 2 características do imóvel.
@@ -57,43 +37,86 @@ class ImovelFactory extends Factory
         - Atributos para terrenos: quartos e banheiros devem ser 0.
         - Características: Piscina (bool), area_churrasco (bool), garagem (quant)
         - Observações:
-            - Seja criativo nos nomes das ruas e dos números dos imóveis.
+            - Seja criativo nos nomes das ruas e dos números dos imóveis. O número não derve ser 123
             - Não responda nada além dos atributos em JSON.
         Responda no formato JSON, seguindo o MODELO abaixo, o que está entre aspas triplas. NÃO RESPONDA FORA DESTE FORMATO:
-        '''
-        {
-            'titulo': 'Linda casa com piscina no São Cristóvão',
-            'descricao': 'Casa nova com 3 quartos, 2 banheiros, piscina, garagem para 2 carros, área de churrasco, localizada em um dos melhores bairros da cidade. Não perca essa oportunidade!'
-            'preco': 500000,
-            'logradouro': 'Rua Fortunato Buzeto, 81',
-            'bairro': 'São Cristóvão',
-            'cidade': 'Monte Alto',
-            'estado': 'SP',
-            'cep': '15910-000',
-            'tipo': 'Casa',
-            'quartos': 3,
-            'banheiros': 2,
-            'status': 'Disponível',
-            'tipo_negociacao': 'Venda',
-            'area_terreno': 300,
-            'area_construida': 150,
-            'caracteristicas': {
-                'piscina': true,
-                'area_churrasco': true,
-                'garagem': 2
+        '''{
+            \"titulo\": \"Linda casa com piscina no São Cristóvão\",
+            \"descricao\": \"Casa nova com 3 quartos, 2 banheiros, piscina, garagem para 2 carros, área de churrasco, localizada em um dos melhores bairros da cidade. Não perca essa oportunidade!\",
+            \"preco\": 500000,
+            \"logradouro\": \"Rua Fortunato Buzeto, 81\",
+            \"bairro\": \"São Cristóvão\",
+            \"cidade\": \"Monte Alto\",
+            \"estado\": \"SP\",
+            \"cep\": \"15910-000\",
+            \"tipo\": \"Casa\",
+            \"quartos\": 3,
+            \"banheiros\": 2,
+            \"status\": \"Disponível\",
+            \"tipo_negociacao\": \"Venda\",
+            \"area_terreno\": 300,
+            \"area_construida\": 150,
+            \"caracteristicas\": {
+                \"piscina\": true,
+                \"area_churrasco\": true,
+                \"garagem\": 2
             }
-        }
-        '''
-        ";
+        }'''";
 
-        $result = json_decode(OpenAI::chat()->create([
+        $response = OpenAI::chat()->create([
             'model' => 'gpt-3.5-turbo',
             'messages' => [
                 ['role' => 'user', 'content' => $prompt],
             ],
-        ])->choices[0]->message->content);
+        ]);
 
-        // echo $result->titulo;
+        // Decode the JSON response and check for errors
+        $result = json_decode($response->choices[0]->message->content);
+        
+        // Validate result
+        if (!isset($result->titulo) || !isset($result->descricao)) {
+            throw new \Exception("Invalid response from OpenAI API: " . $response->choices[0]->message->content);
+        }
+
+        // Initialize Unsplash API
+        HttpClient::init([
+            'applicationId' => 'D960jgr1iBHKa9hVF70cgYZwGw9MK1Voq6rklOkedig',
+            'secret' => 'hyle0W2UMbeE_oIoucXlznPo3jLvwdCKd5lqDxnUcEA',
+            'callbackUrl' => 'https://your-application.com/oauth/callback',
+            'utmSource' => 'Laravel Realize'
+        ]);
+
+        // Fetch images based on the type of property generated by OpenAI
+        $type = strtolower($result->tipo);
+        $searchTerms = [
+            'casa' => 'house exterior',
+            'apartamento' => 'apartment exterior',
+            'comercial' => 'commercial building exterior',
+            'terreno' => 'land plot',
+            'sobrado' => 'two-story house exterior'
+        ];
+
+        $page = rand(1, 40); // Random page number to get different images
+        $response = Search::photos($searchTerms[$type], $page, 1, 'landscape');
+        $photos = $response->getResults();
+
+        $searchTerms2 = [
+            'casa' => 'house interior',
+            'apartamento' => 'apartment interior',
+            'comercial' => 'commercial building interior',
+            'terreno' => 'land plot',
+            'sobrado' => 'house interior'
+        ];
+
+        $page = rand(1, 40); // Another random page number for interior images
+        $response2 = Search::photos($searchTerms2[$type], $page, 2, 'landscape');
+        $photos = array_merge($photos, $response2->getResults());
+
+        // Extract image URLs
+        $imageUrls = [];
+        foreach ($photos as $photo) {
+            $imageUrls[] = $photo['urls']['small'];
+        }
 
         return [
             'titulo' => $result->titulo,
