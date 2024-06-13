@@ -13,12 +13,12 @@ Route::get('/', function () {
 
 Route::resource('imoveis', ImovelController::class);
 
-Route::get('/quem somos', function () {
+Route::get('/quem-somos', function () {
     return view('quem-somos');
-})->name('servicos');
+})->name('quem-somos');
 
 Route::get('/contato', function () {
-    return view('welcome');
+    return view('contato');
 })->name('contato');
 
 Route::get('/comprar', function () {
@@ -30,7 +30,10 @@ Route::get('/alugar', function () {
 })->name('alugar');
 
 Route::get('/anunciar', function () {
-    return view('welcome');
+    return view('anunciar');
 })->name('anunciar');
 
 Route::get('/imoveis/buscar', [ImovelController::class, 'buscar'])->name('imoveis.buscar');
+Route::post('/imoveis/anunciar', [ImovelController::class, 'store'])->name('imoveis.anunciar');
+
+Route::post('enviar-contato', [ImovelController::class, 'enviarContato'])->name('enviar-contato');

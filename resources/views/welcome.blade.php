@@ -95,38 +95,58 @@
                 <!-- Card 1 -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-left">
                     <div class="flex items-center space-x-4 mb-4">
-                        <img src="{{ asset('assets/icons/house-icon.png') }}"
-                            alt="Tranquilidade para comprar o seu imóvel" class="w-10 h-10">
+                        <i class="fa-solid fa-house-user fa-xl"></i>
                         <h3 class="text-xl font-bold">Tranquilidade para comprar o seu imóvel</h3>
                     </div>
                     <p class="text-gray-700 mb-4">Cuidamos de todo o processo para você focar apenas no que importa.</p>
-                    <a href="#" class="text-blue-500 font-bold">Buscar um imóvel</a>
+                    <a href="#" class="text-blue-500 font-bold hover:underline">Buscar um imóvel</a>
                 </div>
                 <!-- Card 2 -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-left">
                     <div class="flex items-center space-x-4 mb-4">
-                        <img src="{{ asset('assets/icons/business-icon.png') }}"
-                            alt="Encontre o espaço ideal para o seu negócio" class="w-10 h-10">
+                        <i class="fa-solid fa-house-circle-check fa-xl"></i>
                         <h3 class="text-xl font-bold">Encontre o espaço ideal para o seu negócio</h3>
                     </div>
                     <p class="text-gray-700 mb-4">Nossa consultoria especializada cuida da busca do ponto de venda ideal
                         para você.</p>
-                    <a href="#" class="text-blue-500 font-bold">Saiba Mais</a>
+                    <a href="{{ route('quem-somos') }}" class="text-blue-500 font-bold hover:underline">Saiba Mais</a>
                 </div>
                 <!-- Card 3 -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-left">
                     <div class="flex items-center space-x-4 mb-4">
-                        <img src="{{ asset('assets/icons/ads-icon.png') }}" alt="Anuncie grátis com a gente"
-                            class="w-10 h-10">
+                        <i class="fa-regular fa-handshake fa-xl"></i>
                         <h3 class="text-xl font-bold">Anuncie grátis com a gente</h3>
                     </div>
                     <p class="text-gray-700 mb-4">Evite dores de cabeça! Anunciar com a Realize é simples e rápido.</p>
-                    <a href="#" class="text-blue-500 font-bold">Quero Anunciar</a>
+                    <a href="{{ route('anunciar') }}" class="text-blue-500 font-bold hover:underline">Quero Anunciar</a>
                 </div>
+            </div>
+        </section>
+
+
+        {{-- carrosel --}}
+        <section class="splide" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">Slide 01</li>
+                    <li class="splide__slide">Slide 02</li>
+                    <li class="splide__slide">Slide 03</li>
+                    <li class="splide__slide">Slide 04</li>
+                </ul>
             </div>
         </section>
 
     </div>
 
-    <x-whastapp-btn></x-whastapp-btn>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+        var splide = new Splide('.splide', {
+            type: 'loop',
+            perPage: 3,
+            perMove: 1,
+        });
+
+        splide.mount();
+    </script>
+
 </x-layout>
