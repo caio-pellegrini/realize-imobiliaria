@@ -8,7 +8,7 @@
             <img src="{{ asset('assets/imgs/hero.png') }}" alt="Family" class="rounded-lg">
             <div
                 class="lg:absolute lg:bottom-16 lg:right-44 sm:flex flex-col lg:flex-row justify-between items-center lg:p-8 w-full lg:w-auto">
-                <div class="bg-white text-black p-4 rounded-lg shadow-md mt-6 lg:mt-0 lg:max-w-md w-full">
+                <div data-aos="fade-up" class="bg-white text-black p-4 rounded-lg shadow-md mt-6 lg:mt-0 lg:max-w-md w-full">
                     <form method="GET" action="{{ route('imoveis.buscar') }}">
                         <p class="text-lg font-semibold mb-2">Encontre em poucos cliques o seu imóvel ideal</p>
                         <div class="flex items-center space-x-2 mb-4">
@@ -41,7 +41,7 @@
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <!-- Property Card -->
                 <div class="bg-white rounded-lg shadow-md p-4">
-                    <img src="{{ asset('assets/imgs/property1.png') }}" alt="Property 1"
+                    <img src="{{ asset('assets/imgs/imoveis/casa1.png') }}" alt="Property 1"
                         class="w-full h-48 object-cover rounded-md mb-4">
                     <div class="text-center">
                         <h3 class="text-xl font-bold">Casa para alugar</h3>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-4">
-                    <img src="{{ asset('assets/imgs/property1.png') }}" alt="Property 1"
+                    <img src="{{ asset('assets/imgs/imoveis/casa2.png') }}" alt="Property 1"
                         class="w-full h-48 object-cover rounded-md mb-4">
                     <div class="text-center">
                         <h3 class="text-xl font-bold">Casa para alugar</h3>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md p-4">
-                    <img src="{{ asset('assets/imgs/property1.png') }}" alt="Property 1"
+                    <img src="{{ asset('assets/imgs/imoveis/casa3.png') }}" alt="Property 1"
                         class="w-full h-48 object-cover rounded-md mb-4">
                     <div class="text-center">
                         <h3 class="text-xl font-bold">Casa para alugar</h3>
@@ -148,5 +148,8 @@
 
         splide.mount();
     </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
 
 </x-layout>

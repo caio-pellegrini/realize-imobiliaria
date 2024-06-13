@@ -7,11 +7,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// Route::get('/imoveis', [ImovelController::class, 'index'])->name('imoveis.index');
+Route::get('/imoveis', [ImovelController::class, 'index'])->name('imoveis.index');
 // Route::get('/imovel/{id}', [ImovelController::class, 'show'])->name('imoveis.show');
 // Route::get('/imoveis/anunciar', [ImovelController::class, 'create'])->name('imoveis.create');
 
-Route::resource('imoveis', ImovelController::class);
+// Route::resource('imoveis', ImovelController::class);
 
 Route::get('/quem-somos', function () {
     return view('quem-somos');
@@ -34,6 +34,6 @@ Route::get('/anunciar', function () {
 })->name('anunciar');
 
 Route::get('/imoveis/buscar', [ImovelController::class, 'buscar'])->name('imoveis.buscar');
-Route::post('/imoveis/anunciar', [ImovelController::class, 'store'])->name('imoveis.anunciar');
+Route::post('/imoveis/anunciar', [ImovelController::class, 'create'])->name('imoveis.anunciar');
 
-Route::post('enviar-contato', [ImovelController::class, 'enviarContato'])->name('enviar-contato');
+Route::post('/enviar-contato', [ImovelController::class, 'enviarContato'])->name('enviar-contato');

@@ -1,12 +1,12 @@
 <x-layout layout>
     <x-slot name="titulo">Quem Somos - Realize</x-slot>
 
-    <div class="container mx-auto px-4 md:px-40 py-4 space-y-12">
+    <div class="container mx-auto px-4 md:px-40 py-4 space-y-8">
         <!-- Section 1 -->
         <section class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
             <img src="{{ asset('assets/imgs/quem-somos/servicos.png') }}" alt="Section 1"
-                class="w-full lg:w-1/2 rounded-lg order-2 lg:order-none">
-            <div class="lg:w-1/2 space-y-4 lg:space-y-8 order-1 lg:order-none">
+                class="w-full lg:w-1/2 rounded-lg order-2 lg:order-none" data-aos="fade-right">
+            <div class="lg:w-1/2 space-y-4 lg:space-y-8 order-1 lg:order-none" data-aos="fade-left">
                 <h2 class="text-3xl text-nowrap lg:text-4xl font-bold text-primary lg:mb-2">Seu novo lar começa aqui</h2>
                 <p class="text-gray-800 text-xl lg:w-2/3 ">
                     A Realize é uma empresa que se destaca pela sua versatilidade no setor imobiliário. Oferecemos uma
@@ -17,8 +17,8 @@
         </section>
 
         <!-- Section 2 -->
-        <section class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
-            <div class="lg:w-1/2 space-y-4 lg:space-y-8 ">
+        <section class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8 -mt-2">
+            <div class="lg:w-1/2 space-y-4 lg:space-y-8 " data-aos="fade-up-right" >
                 <h2 class="text-3xl lg:text-4xl  font-bold text-primary mb-2">Realizamos seu projeto do início ao fim</h2>
                 <p class="text-gray-800 text-xl lg:w-4/5">
                     Como construtora, a Realize está envolvida no desenvolvimento de novos imóveis. Isso inclui a
@@ -27,14 +27,14 @@
                 </p>
             </div>
             <img src="{{ asset('assets/imgs/quem-somos/construtora.png') }}" alt="Section 2"
-                class="w-full lg:w-1/2 rounded-lg order-1 lg:order-none">
+                class="w-full lg:w-1/2 rounded-lg order-1 lg:order-none"  data-aos="fade-up-left">
         </section>
 
         <!-- Section 3 -->
         <section class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
             <img src="{{ asset('assets/imgs/quem-somos/corretora.png') }}" alt="Section 2"
-                class="w-full lg:w-1/2 rounded-lg order-2 lg:order-none">
-            <div class="lg:w-1/2 space-y-4 lg:space-y-8 order-1 lg:order-none">
+                class="w-full lg:w-1/2 rounded-lg order-2 lg:order-none" data-aos="fade-right">
+            <div class="lg:w-1/2 space-y-4 lg:space-y-8 order-1 lg:order-none"  data-aos="fade-left">
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-2">Atendemos todas as suas necessidades imobiliárias.</h2>
                 <p class="text-gray-800 text-xl lg:w-2/3">
                     Como corretora, a Realize oferece serviços relacionados ao assessoramento de clientes em
@@ -45,7 +45,7 @@
 
         <!-- Section 4 -->
         <section class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
-            <div class="lg:w-1/2 space-y-4 lg:space-y-8">
+            <div class="lg:w-1/2 space-y-4 lg:space-y-8"  data-aos="fade-up-right">
                 <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-2">Realizamos seu projeto do início ao fim</h2>
                 <p class="text-gray-800 text-lg lg:text-xl lg:w-4/5">
                     Como construtora, a Realize está envolvida no desenvolvimento de novos imóveis. Isso inclui a
@@ -54,7 +54,7 @@
                 </p>
             </div>
             <img src="{{ asset('assets/imgs/quem-somos/construtora.png') }}" alt="Section 2"
-                class="w-full lg:w-1/2 rounded-lg">
+                class="w-full lg:w-1/2 rounded-lg" data-aos="fade-up-left">
         </section>
     </div>
 
@@ -87,7 +87,7 @@
         <!-- Outras seções aqui... -->
 
         <!-- Seção de FAQ -->
-        <section class="my-10 max-w-2xl mx-auto" x-data="{ openQuestion: null }">
+        <section class="my-10 max-w-2xl mx-auto" x-data="{ openQuestion: null }" data-aos="fade-up">
             <h2 class="text-4xl font-bold text-primary mb-6 text-center">Dúvidas Frequentes</h2>
             
             <!-- Pergunta 1 -->
@@ -130,4 +130,7 @@
             </div>
         </section>
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
 </x-layout>

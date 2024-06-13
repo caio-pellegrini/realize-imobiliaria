@@ -12,7 +12,7 @@ class ImovelController extends Controller
      */
     public function index()
     {
-        $imoveis = Imovel::query()->orderBy('created_at', 'desc')->paginate();
+        $imoveis = Imovel::query()->paginate();
         return view('imoveis.index', compact('imoveis'));
     }
 
@@ -98,5 +98,9 @@ class ImovelController extends Controller
 
         // Retornar os resultados da busca (você pode retornar uma view específica com os resultados)
         return view('imoveis.resultados', compact('imoveis'));
+
+        
     }
+
+    
 }
