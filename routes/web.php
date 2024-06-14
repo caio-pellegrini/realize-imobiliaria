@@ -32,4 +32,4 @@ Route::get('/anunciar', function () {
 Route::get('/imoveis/buscar', [ImovelController::class, 'buscar'])->name('imoveis.buscar');
 Route::post('/imoveis/anunciar', [ImovelController::class, 'create'])->name('imoveis.anunciar');
 
-Route::post('/enviar-contato', [ImovelController::class, 'enviarContato'])->name('enviar-contato');
+Route::post('/enviar-contato', [ImovelController::class, 'enviarcontato'])->name('enviar-contato');

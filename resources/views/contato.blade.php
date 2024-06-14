@@ -1,14 +1,14 @@
 <x-layout>
-    <x-slot name="titulo">Contato - Realize Imobiliária</x-slot>
+    <x-slot name="titulo">contato - Realize Imobiliária</x-slot>
 
     <div class="container mx-auto px-4 md:px-40 md:h-screen py-16 space-y-12">
         <!-- Título da Página -->
         <section class="text-center">
-            <h1 class="text-4xl font-bold text-primary mb-4">Entre em Contato Conosco</h1>
+            <h1 class="text-4xl font-bold text-primary mb-4">Entre em contato Conosco</h1>
             <p class="text-lg text-gray-700">Preencha o formulário abaixo ou utilize nossas informações de contato para falar conosco.</p>
         </section>
 
-        <!-- Formulário de Contato -->
+        <!-- Formulário de contato -->
         <section class="bg-white p-8 rounded-lg shadow-lg">
             <form action="{{ route('enviar-contato') }}" method="POST" class="space-y-4">
                 @csrf

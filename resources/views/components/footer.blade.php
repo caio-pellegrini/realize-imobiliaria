@@ -2,13 +2,13 @@
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
         <!-- Logo e Direitos Reservados -->
         <div class="flex flex-col items-center md:items-start text-center md:text-left">
-            <x-application-logo class="w-24 h-24"></x-application-logo>
+            <img src="{{ asset('assets/imgs/logo2.png') }}" alt="">
             <p class="mt-4">&copy; 2024 | Todos os Direitos Reservados.</p>
         </div>
         
-        <!-- Contato -->
+        <!-- contato -->
         <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
-            <h3 class="text-lg font-semibold mb-2">Contato</h3>
+            <h3 class="text-lg font-semibold mb-2">contato</h3>
 
             <a href="{{ route('contato') }}" class="space-x-2"><i class="fas fa-lg fa-phone-alt"></i><span class="hover:underline">+55 (16) 3242-1704</span></a>
             <a href="mailto:realizama@gmail.com" class="space-x-2"><i class="far fa-lg fa-envelope"></i><span class="hover:underline">realizema@gmail.com</span></a>

@@ -28,7 +28,7 @@
                             class="bg-secondary rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0">
                             2</div>
                         <div>
-                            <h3 class="text-xl font-bold">Contato do consultor</h3>
+                            <h3 class="text-xl font-bold">contato do consultor</h3>
                             <p>Nossa equipe entrará em contato para agendar as fotos, tour 360º e vídeos.</p>
                         </div>
                     </div>

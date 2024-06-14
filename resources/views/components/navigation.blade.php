@@ -18,7 +18,6 @@
                     <x-nav-link :href="route('alugar')" :active="request()->routeIs('alugar')">
                         {{ __('Alugar') }}
                     </x-nav-link>
-
                     <x-nav-link :href="route('contato')" :active="request()->routeIs('contato')">
                         {{ __('Contato') }}
                     </x-nav-link>
@@ -46,17 +45,17 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('quem-somos')" :active="request()->routeIs('quem-somos')">
-                {{ __('Serviços') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('contato')" :active="request()->routeIs('contato')">
-                {{ __('Contato') }}
-            </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('comprar')" :active="request()->routeIs('comprar')">
                 {{ __('Comprar') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('alugar')" :active="request()->routeIs('alugar')">
                 {{ __('Alugar') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('contato')" :active="request()->routeIs('contato')">
+                {{ __('contato') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('quem-somos')" :active="request()->routeIs('quem-somos')">
+                {{ __('Quem Somos') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('anunciar')" :active="request()->routeIs('anunciar')">
                 {{ __('Anuncie seu Imóvel') }}
