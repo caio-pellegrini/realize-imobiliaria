@@ -8,7 +8,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/imoveis', [ImovelController::class, 'index'])->name('imoveis.index');
-// Route::get('/imovel/{id}', [ImovelController::class, 'show'])->name('imoveis.show');
+Route::get('/imovel/{id}', [ImovelController::class, 'show'])->name('imoveis.show');
 // Route::get('/imoveis/anunciar', [ImovelController::class, 'create'])->name('imoveis.create');
 
 // Route::resource('imoveis', ImovelController::class);
@@ -21,9 +21,9 @@ Route::get('/contato', function () {
     return view('contato');
 })->name('contato');
 
-Route::get('/comprar', [ImovelController::class, 'index'])->name('comprar');
+Route::get('/comprar', [ImovelController::class, 'comprar'])->name('comprar');
 
-Route::get('/alugar', [ImovelController::class, 'index'])->name('alugar');
+Route::get('/alugar', [ImovelController::class, 'alugar'])->name('alugar');
 
 Route::get('/anunciar', function () {
     return view('anunciar');

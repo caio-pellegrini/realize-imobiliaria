@@ -93,7 +93,7 @@
                 mais rápido.</p>
             <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-md p-6 text-left">
+                <div class="bg-white rounded-lg shadow-md p-6 text-left" data-aos="fade-right">
                     <div class="flex items-center space-x-4 mb-4">
                         <i class="fa-solid fa-house-user fa-xl"></i>
                         <h3 class="text-xl font-bold">Tranquilidade para comprar o seu imóvel</h3>
@@ -102,7 +102,7 @@
                     <a href="#" class="text-blue-500 font-bold hover:underline">Buscar um imóvel</a>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white rounded-lg shadow-md p-6 text-left">
+                <div class="bg-white rounded-lg shadow-md p-6 text-left"  data-aos="fade-up">
                     <div class="flex items-center space-x-4 mb-4">
                         <i class="fa-solid fa-house-circle-check fa-xl"></i>
                         <h3 class="text-xl font-bold">Encontre o espaço ideal para o seu negócio</h3>
@@ -112,7 +112,7 @@
                     <a href="{{ route('quem-somos') }}" class="text-blue-500 font-bold hover:underline">Saiba Mais</a>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white rounded-lg shadow-md p-6 text-left">
+                <div class="bg-white rounded-lg shadow-md p-6 text-left"  data-aos="fade-left">
                     <div class="flex items-center space-x-4 mb-4">
                         <i class="fa-regular fa-handshake fa-xl"></i>
                         <h3 class="text-xl font-bold">Anuncie grátis com a gente</h3>

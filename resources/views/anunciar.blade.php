@@ -10,13 +10,13 @@
         </section>
 
         <section class="flex flex-col lg:flex-row items-center justify-around space-y-4 lg:space-y-0 lg:space-x-6">
-            <div
+            <div data-aos="fade-right"
                 class="lg:w-2/3 space-y-4 lg:space-y-8 order-1 lg:order-none bg-gray-300 px-4 py-3 md:px-8 md:py-6 rounded-lg max-w-2xl">
                 <h2 class="text-2xl font-bold text-primary mb-6">São apenas 3 passos:</h2>
                 <div class="space-y-6">
                     <div class="flex items-start">
                         <div
-                            class="bg-primary text-white rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0">
+                            class="bg-secondary  rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0">
                             1</div>
                         <div>
                             <h3 class="text-xl font-bold">Cadastre o seu imóvel</h3>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="flex items-start">
                         <div
-                            class="bg-primary text-white rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0">
+                            class="bg-secondary rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0">
                             2</div>
                         <div>
                             <h3 class="text-xl font-bold">Contato do consultor</h3>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="flex items-start">
                         <div
-                            class="bg-primary text-white rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0 ">
+                            class="bg-secondary rounded-full h-8 md:h-10 w-8 md:w-10 flex items-center justify-center font-bold mr-4 shrink-0 ">
                             3</div>
                         <div>
                             <h3 class="text-xl font-bold">Anúncio no ar</h3>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <img src="{{ asset('assets/imgs/anunciar/anunciar1.png') }}" alt="Anuncie seu imóvel"
-                class="mx-auto md:w-1/4 rounded-lg">
+                class="mx-auto md:w-1/4 rounded-lg" data-aos="fade-left">
 
         </section>
 
@@ -148,4 +148,7 @@
         </section>
 
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
 </x-layout>

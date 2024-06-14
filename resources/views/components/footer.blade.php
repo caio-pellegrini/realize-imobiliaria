@@ -1,4 +1,4 @@
-<footer class="bg-primary text-white px-4 md:px-40 py-8">
+<footer class="bg-primary text-white px-4 md:px-40 py-8 mt-20">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
         <!-- Logo e Direitos Reservados -->
         <div class="flex flex-col items-center md:items-start text-center md:text-left">

@@ -78,7 +78,7 @@
                 <p class="text-lg mb-4">
                     Oferecemos <strong>avaliação precisa</strong>, estratégias de marketing eficazes e um atendimento personalizado para garantir que seu imóvel seja visto pelo público certo.
                 </p>
-                <a href="#" class="inline-block bg-primary text-white text-lg font-bold py-2 px-4 rounded hover:bg-blue-700">Anunciar</a>
+                <a href="{{ route('anunciar') }}" class="inline-block bg-secondary text-white text-lg font-bold py-2 px-4 rounded hover:bg-blue-700">Anunciar</a>
             </div>
         </section>
     </div>

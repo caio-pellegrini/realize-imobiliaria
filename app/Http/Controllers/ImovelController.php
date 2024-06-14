@@ -35,9 +35,9 @@ class ImovelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Imovel $imovel)
+    public function show($id)
     {
-        $imoveis = Imovel::all();
+        $imovel = Imovel::find($id);
         return view('imoveis.show', ['imovel' => $imovel]);
     }
 
@@ -100,6 +100,18 @@ class ImovelController extends Controller
         return view('imoveis.resultados', compact('imoveis'));
 
         
+    }
+
+    public function comprar()
+    {
+        $imoveis = Imovel::where('tipo_negociacao', 'Venda')->get();
+        return view('comprar', ['imoveis' => $imoveis, 'titulo' => 'Imóveis à Venda']);
+    }
+
+    public function alugar()
+    {
+        $imoveis = Imovel::where('tipo_negociacao', 'Locação')->get();
+        return view('alugar', ['imoveis' => $imoveis, 'titulo' => 'Imóveis para Locação']);
     }
 
     
